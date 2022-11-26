@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DATE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;700;800;900&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/date.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>CLOCK</h1>
+      <div id="dateBox">
+        <div class="txt01">2021 / Nov / 23</div>
+        <div class="txt02">tue</div>
+      </div>
+      <div id="timeBox">AM 11 : 53 : 29</div>
+      <div id="analog">
+        <div class="itemBox">
+          <span class="hour"></span>
+          <span class="min"></span>
+          <span class="sec"></span>s
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    //이벤트를 걸어서... 1초마다 한번씩 실행하게 해보기...
+    let count = 0;
+    function 실행함수() {
+      count = count + 1;
+      console.log(count);
+    } // function declation
+    const 실행함수02 = function () {
+      count = count + 1;
+      console.log(count);
+    }; // function expression
+
+    setInterval(실행함수02, 1000);
+    const months = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+    const days = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+
+    function addZero(num) {
+      let result;
+      if (num < 10) {
+        result = "0" + num;
+        return result;
+        //console.log("나는 리컨 밑에 있으므로 찍히지 않습니다. 함수가 리턴을 만나면 값을 돌려주고 실행 종요합니다.");
+      }
+      result = num;
+      return result;
+    }
+    const txt01 = document.querySelector("#dateBox .txt01");
+    const txt02 = document.querySelector("#dateBox .txt02");
+    const timeBox = document.querySelector("#timeBox");
+    const itemHour = document.querySelector("#analog .hour");
+    const itemMin = document.querySelector("#analog .min");
+    const itemSec = document.querySelector("#analog .sec");
+    function showTime() {
+      const now = new Date(); // 실행되는 그 시점의 시간을 선언
+      const year = now.getFullYear(); // 4자리 연도
+      const month = now.getMonth(); // 월 0 ~ 11
+      const date = now.getDate(); // 일
+      const day = now.getDay(); // 요일
+      let hour = now.getHours(); // 24시간
+      const min = now.getMinutes(); // 분 0~59
+      const sec = now.getSeconds(); // 초 0~59
+      let apm; //AM/PM
+      if (hour >= 12) {
+        apm = "PM";
+        hour = hour - 12;
+      } else {
+        apm = "AM";
+      }
+
+      txt01.textContent = `${year} / ${months[month]} / ${date}`;
+      txt02.textContent = days[day];
+
+      timeBox.textContent = `${apm} ${addZero(hour)} : ${addZero(min)} : ${addZero(sec)}`;
+
+      itemSec.style.transform = `rotate(${sec * 6}deg)`;
+      itemMin.style.transform = `rotate(${min * 6 + sec * 0.1}deg)`;
+      itemHour.style.transform = `rotate(${hour * 30 + min * 0.5}deg)`;
+    }
+    showTime();
+    setInterval(showTime, 1000);
+
+    //리모콘.채널(11) = mbc
+    //리모콘.채널(44) = ocn
+  </script>
+</html>

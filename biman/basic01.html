@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    //산출된 값이 18.5이하면 저체중, 18.5~23은 정상, 23~25는 과체중, 25~30은 비만, 30 이상은 고도비만
+    console.log(10 > 8 || 8 < 5);
+    let myWeight = 90;
+    let myHeight = 180;
+    let meterHeight = 180 / 100;
+    const biman = myWeight / (meterHeight * meterHeight);
+    //console.log(biman);
+    if (biman <= 18.5) {
+      document.write("당신은 저체중입니다.");
+    } else if (biman > 18.5 && biman < 23) {
+      document.write("당신은 정상입니다.");
+    } else if (biman >= 23 && biman < 25) {
+      document.write("당신은 과체중입니다.");
+    } else if (biman >= 25 && biman < 30) {
+      document.write("당신은 비만입니다.");
+    } else {
+      document.write("당신은 고도비만입니다.");
+    }
+  </script>
+</html>

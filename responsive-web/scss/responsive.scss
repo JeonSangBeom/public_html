@@ -1,0 +1,278 @@
+@import "vars";
+@import "mixins";
+
+//분기..... mediaquery
+// responsive.css 는 css 제일 마지막 줄에 쓰느게 좋다.
+// 점수 먼저 따지고 순서 따진다.
+
+@media all and (max-width: 1440px) {
+  * {
+    box-sizing: border-box;
+  }
+  #header {
+    #logo {
+      left: 20px;
+    }
+    .etc {
+      right: 20px;
+    }
+    #gnb {
+      .list {
+        > li {
+          > a {
+            padding: 0 30px;
+          }
+        }
+      }
+    }
+  }
+  #main {
+    #product {
+      .list {
+        .scroll {
+          display: block;
+        }
+      }
+      .btns {
+        display: none;
+      }
+    }
+  }
+  .contents {
+    width: 100%;
+    padding: 0 50px;
+  }
+  #footer {
+    .contents {
+      .link {
+        right: 50px;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 1280px) {
+  #header {
+    #logo {
+    }
+    #gnb {
+      z-index: 2;
+      background-color: #fff;
+      color: $text-color;
+      position: fixed;
+      left: 100%;
+      width: 100%;
+      height: 100%;
+      padding-top: 80px;
+      .list {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        > li {
+          width: 100%;
+          > a {
+            width: 100%;
+            height: 50px;
+            border-bottom: 1px solid $border-color;
+            justify-content: flex-start;
+          }
+          .depth02 {
+            position: relative;
+            display: none;
+            padding: 8px 0;
+            li {
+              a {
+                height: auto;
+                justify-content: flex-start;
+                padding: 15px 0 15px 50px;
+                font-size: $normal-size;
+                position: relative;
+                line-height: 1;
+                &:before {
+                  @include pseudo();
+                  @include box(3px);
+                  background-color: $main-color;
+                  left: 40px;
+                  top: 50%;
+                  transform: translateY(-50%);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .close {
+      z-index: 3;
+      color: $text-color;
+      display: block;
+      position: absolute;
+      right: 30px;
+      top: 20px;
+    }
+    .all {
+      display: flex;
+    }
+  }
+}
+
+@media all and (max-width: 1024px) {
+  .contents {
+    padding: 0 20px;
+  }
+  #footer {
+    .contents {
+      .link {
+        right: 20px;
+      }
+    }
+  }
+  #main {
+    #news {
+      .contents {
+        .list {
+          display: block;
+          li {
+            width: 100%;
+          }
+        }
+      }
+    }
+    #cs {
+      .contents {
+        ul {
+          display: block;
+          li {
+            width: 100%;
+            margin: 10px 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+//960보다 작아졌을떄..
+@media all and (max-width: 960px) {
+  #footer {
+    position: relative;
+    .contents {
+      padding-bottom: 50px;
+      .addressBox {
+        address {
+          .info {
+            span {
+              display: block;
+              margin: 5px 0;
+            }
+            a {
+              width: 100%;
+              height: 50px;
+              @include flexCenter();
+              background-color: $text-color;
+              color: $white-color;
+              border-radius: 100px;
+              margin-top: 50px;
+            }
+          }
+          .copyright {
+            position: absolute;
+            bottom: 0px;
+          }
+        }
+      }
+      .link {
+        position: relative;
+        right: 0;
+        //position:static이 기본값 이건 top,right 등등 정해진 값을 무시한다. 보통 잘 안쓰는데
+        //반응형 만들때 가끔 쓰면 유용하다.
+        height: 50px;
+        @include flexCenter();
+        background-color: $text-color;
+        color: $white-color;
+        border-radius: 100px;
+        margin-top: 20px;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 640px) {
+  .titleBox {
+    h2 {
+      font-size: $large-size;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: $normal-size;
+    }
+  }
+  #main {
+    #mainVisual {
+      .slogan {
+        .main {
+          font-size: $x-large-size;
+        }
+        .sub {
+          font-size: $normal-size;
+        }
+        a {
+          height: 50px;
+        }
+        .pagination {
+          .swiper-pagination-bullet {
+            height: 14px;
+            width: 14px;
+            &-active {
+              width: 50px;
+            }
+          }
+        }
+      }
+    }
+    #product {
+      .titleBox {
+        left: 30px;
+        top: 30px;
+      }
+    }
+    #news {
+      .contents {
+        .list li {
+          margin-bottom: 20px;
+        }
+        .list li a .txtBox {
+          position: relative;
+          padding: 15px;
+          transform: translateY(0);
+          h3 {
+            font-size: $medium-size;
+          }
+        }
+      }
+    }
+  }
+  #footer {
+    .contents {
+      .addressBox {
+        .logo {
+          margin-bottom: 30px;
+          img {
+            height: 30px;
+          }
+        }
+        address {
+          .info {
+            a {
+              height: 40px;
+            }
+          }
+        }
+      }
+      .link {
+        height: 40px;
+        margin-top: 10px;
+      }
+    }
+  }
+}

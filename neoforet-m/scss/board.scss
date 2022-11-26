@@ -1,0 +1,235 @@
+@import "vars";
+@import "mixins";
+
+.require {
+  color: #f00;
+}
+.boardBox {
+  border-top: 1px solid $border-color;
+  margin-top: 100px;
+  .info {
+    line-height: 1.5;
+    padding: 50px 0;
+  }
+}
+.board {
+  width: 100%;
+  border-top: 1px solid $main-color;
+  th,
+  td {
+    padding: 20px 10px;
+  }
+  th {
+    text-align: left;
+    &.even {
+      padding-left: 50px;
+    }
+  }
+  input[type="text"],
+  textarea {
+    border: none;
+    border-bottom: 1px solid darken($light-gray-color, 10);
+    width: 100%;
+    height: 40px;
+    outline: none;
+    transition: 0.25s ease;
+    &:focus,
+    &:hover {
+      border-bottom-color: $text-color;
+    }
+  }
+  select {
+    height: 40px;
+    border: none;
+    width: calc(40 / 90 * 100%);
+    appearance: none;
+    position: relative;
+    outline: none;
+    background: url("../images/common/keyboard_arrow_down_black_24dp.svg") right 10px top 50% no-repeat;
+    // &:after {
+    //   display: block;
+    //   font-family: "Material Icons";
+    //   content: "expand_more";
+    //   position: absolute;
+    //   left: 0;
+    //   top: 50%;
+    //   z-index: 2;
+    // }
+  }
+  .address {
+    .addr01 {
+      width: calc(4 / 9 * 100%);
+
+      display: flex;
+      margin-bottom: 15px;
+      button {
+        white-space: nowrap;
+        border: 2px solid $main-color;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        border-radius: 100px;
+        margin-left: 15px;
+        span {
+          margin-right: 15px;
+        }
+      }
+    }
+    .addr02 {
+      display: flex;
+      .readonly {
+        //width: 80%;
+        box-sizing: border-box;
+      }
+      .etc {
+        box-sizing: border-box;
+        //width: calc(100% - 50px);
+      }
+    }
+    .readonly {
+      border: none;
+      background-color: $gray-color;
+      border-radius: 5px;
+      padding: 0 10px;
+      color: $white-color;
+    }
+  }
+  textarea {
+    box-sizing: border-box;
+    height: 300px;
+    resize: none;
+    background-color: $light-gray-color;
+    padding: 20px;
+  }
+}
+.agreeBox {
+  padding: 50px 0;
+  margin-top: 50px;
+  border-top: 1px solid $gray-color;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  .agree .show {
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+    button {
+      margin-left: 20px;
+      padding: 5px 20px;
+      background-color: $text-color;
+      border-radius: 100px;
+      color: $white-color;
+    }
+  }
+  button[type="submit"] {
+    padding: 20px 50px;
+    background-color: $text-color;
+    color: $white-color;
+    border-radius: 100px;
+  }
+}
+
+.checkbox {
+  input {
+    display: none;
+  }
+  input:checked ~ .label:before {
+    background: $main-color;
+    border: none;
+    color: #fff;
+    content: "\2713";
+    @include longShadow(darken($main-color, 20), right, 10);
+  }
+  .label {
+    display: flex;
+    align-items: center;
+    user-select: none;
+    &:before {
+      content: "";
+      @include flexCenter();
+      width: 20px;
+      height: 20px;
+      overflow: hidden;
+      border: 2px solid $gray-color;
+      border-radius: 3px;
+      margin-right: 5px;
+      box-sizing: border-box;
+    }
+  }
+}
+
+.faqBox {
+  ul {
+    li {
+      &.on {
+        dt {
+          .icon:before {
+            transform: rotate(45deg);
+          }
+          .icon:after {
+            transform: rotate(-45deg);
+          }
+        }
+      }
+      dt {
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid $light-gray-color;
+        cursor: pointer;
+        &:hover {
+          .icon:before,
+          .icon:after {
+            background-color: $main-color;
+          }
+        }
+        .category {
+          display: block;
+          height: 100px;
+          width: 150px;
+          @include flexCenter();
+        }
+        .icon {
+          margin-left: auto;
+          width: 100px;
+          height: 100px;
+          position: relative;
+          &:before {
+            content: "";
+            display: block;
+            width: 20px;
+            height: 2px;
+            background-color: #000;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -3px;
+            transform: rotate(-45deg);
+            transition: 0.25s ease;
+          }
+          &:after {
+            content: "";
+            display: block;
+            width: 20px;
+            height: 2px;
+            background-color: #000;
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            margin-right: -3px;
+            transform: rotate(45deg);
+            transition: 0.25s ease;
+          }
+        }
+      }
+      dd {
+        background-color: $light-gray-color;
+        padding: 50px 50px 50px 150px;
+        line-height: 1.5;
+        display: none;
+        p {
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+}

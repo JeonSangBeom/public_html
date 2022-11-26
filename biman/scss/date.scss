@@ -1,0 +1,122 @@
+@import "vars";
+@import "mixins";
+* {
+  box-sizing: border-box;
+}
+html {
+  font-size: 10px;
+}
+body {
+  font-family: "Lexend", "Noto Sans KR", sans-serif;
+  font-size: 1.6rem;
+  color: $text-color;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  background: none;
+  border: none;
+  outline: none;
+}
+.hidden {
+  display: none;
+}
+.wrap {
+  max-width: 480px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgb(0, 173, 204);
+  overflow: hidden;
+  color: #fff;
+  background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1) 1px, 0, transparent 20px) rgb(0, 173, 204);
+  h1 {
+    font-size: $x-large-size;
+    margin-bottom: 30px;
+    display: none;
+    //@include longShadow(darken(rgb(0, 173, 204), 10), right, 300);
+  }
+  #dateBox {
+    font-size: $large-size;
+    font-weight: 700;
+    //@include longShadow(darken(rgb(0, 173, 204), 10), right, 300);
+    .txt02 {
+      text-align: center;
+      font-size: $x-large-size * 1.2;
+      text-transform: uppercase;
+      font-weight: 200;
+      margin-top: 30px;
+    }
+  }
+  #timeBox {
+    font-size: $x-large-size;
+    margin-top: 30px;
+    color: #fff;
+    font-weight: 200;
+    letter-spacing: -0.02em;
+    @include longShadow(darken(rgb(0, 173, 204), 10), right, 500);
+  }
+  #analog {
+    position: relative;
+    width: calc(100% - 100px);
+
+    margin: 50px 50px 0;
+    box-sizing: border-box;
+    &:before {
+      content: "";
+      display: block;
+      padding-top: 100%;
+    }
+    .itemBox {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      border: 5px solid #fff;
+      border-radius: 100%;
+      background-color: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(20px);
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3), 5px 5px 5px rgba(0, 0, 0, 0.1);
+    }
+    span {
+      display: block;
+      position: absolute;
+      border-radius: 100px;
+      left: 50%;
+      bottom: 50%;
+      transform-origin: 50% 100%;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    }
+    .hour {
+      width: 8px;
+      height: 30%;
+      background-color: #fff;
+      margin-left: -4px;
+      transform: rotate(30deg);
+    }
+    .min {
+      width: 4px;
+      height: 40%;
+      background-color: #fff;
+      margin-left: -2px;
+    }
+    .sec {
+      width: 2px;
+      height: 50%;
+      background-color: #fff;
+      margin-left: -1px;
+    }
+  }
+}
+
+@media all and (max-width: 480px) {
+  .wrap {
+    width: 100%;
+  }
+}

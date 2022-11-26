@@ -1,0 +1,57 @@
+@import "vars";
+@import "mixins";
+
+#subContentsWrap {
+  margin-top: 160px;
+  padding: 100px 0;
+  #contents {
+    width: 1440px;
+    margin: 0 auto;
+  }
+}
+.breadCrumb {
+  ul {
+    display: flex;
+    align-items: center;
+    li {
+      &:nth-child(1) {
+        a:before {
+          display: none;
+        }
+      }
+      a {
+        display: flex;
+        &:before {
+          font-family: "Material Icons";
+          content: "chevron_right";
+          display: block;
+          padding: 0 10px;
+        }
+      }
+    }
+  }
+}
+.subTitle {
+  font-size: $xx-large-size;
+  font-weight: 500;
+  margin: 50px 0;
+}
+#lnb {
+  ul {
+    display: flex;
+    li {
+      margin-right: 20px;
+      &.on a {
+        background-color: $main-color;
+        color: #fff;
+        font-weight: 500;
+      }
+      a {
+        display: block;
+        padding: 20px 40px;
+        background-color: $light-gray-color;
+        border-radius: 100px;
+      }
+    }
+  }
+}

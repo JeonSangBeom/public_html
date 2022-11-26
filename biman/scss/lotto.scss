@@ -1,0 +1,145 @@
+@import "vars";
+@import "mixins";
+* {
+  box-sizing: border-box;
+}
+.wrap {
+  max-width: 480px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Lexend", "Noto Sans KR";
+  height: 100vh;
+  background-color: rgb(0, 173, 204);
+  overflow: hidden;
+  color: #fff;
+  background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1) 1px, 0, transparent 20px) rgb(0, 173, 204);
+  h1 {
+    font-size: 38px;
+    font-weight: 500;
+    margin-top: 50px;
+    text-transform: uppercase;
+    font-weight: 200;
+    @include longShadow(darken(rgb(0, 173, 204), 10), right, 400);
+    strong {
+      font-weight: 500;
+    }
+  }
+  .btns {
+    display: flex;
+    margin-top: 30px;
+    label {
+      margin: 0 5px;
+      input {
+        display: none;
+      }
+      input:checked ~ span:after {
+        background-color: $main-color;
+        border: none;
+        color: #fff;
+        box-shadow: inset 4px 4px 3px rgba(0, 0, 0, 0.2);
+        @include longShadow(darken($main-color, 20), right, 30);
+      }
+      span {
+        user-select: none;
+        font-size: 0;
+        &:after {
+          font-size: 20px;
+          content: attr(data-num);
+          @include flexCenter();
+          overflow: hidden;
+          background-color: #222;
+          color: #fff;
+          width: 40px;
+          height: 40px;
+          border-radius: 100px;
+          box-sizing: border-box;
+        }
+      }
+    }
+  }
+}
+#lottoPaper {
+  margin: 50px auto;
+  width: 100%;
+  position: relative;
+  &:before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+  }
+  .inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    right: 10px;
+    bottom: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+  }
+  ul {
+    display: flex;
+    margin: 5px 0;
+    li {
+      font-weight: 500;
+      font-size: 18px;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #000;
+      color: #fff;
+      border-radius: 100px;
+      margin: 0 2px;
+      overflow: hidden;
+      &.yellow {
+        background-color: rgb(240, 179, 13);
+        @include longShadow(darken(rgb(240, 179, 13), 10), right, 30);
+      }
+      &.blue {
+        background-color: rgb(7, 85, 231);
+        @include longShadow(darken(rgb(7, 85, 231), 10), right, 30);
+      }
+      &.red {
+        background-color: rgb(218, 4, 4);
+        @include longShadow(darken(rgb(218, 4, 4), 10), right, 30);
+      }
+      &.black {
+        background-color: rgb(65, 65, 65);
+        @include longShadow(darken(rgb(65, 65, 65), 10), right, 30);
+      }
+      &.green {
+        background-color: rgb(56, 216, 7);
+        @include longShadow(darken(rgb(56, 216, 7), 10), right, 30);
+      }
+    }
+  }
+}
+
+@media all and (max-width: 380px) {
+  .wrap {
+    width: 100%;
+    padding: 0 10px;
+    h1 {
+      font-size: 32px;
+    }
+  }
+  #lottoPaper {
+    .inner {
+      ul {
+        li {
+          width: 44px;
+          height: 44px;
+        }
+      }
+    }
+  }
+}

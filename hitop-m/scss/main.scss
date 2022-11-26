@@ -1,0 +1,290 @@
+@import "vars";
+@import "mixins";
+//태그 1, class 10, id 1000 , style 1000
+article {
+  padding: 50px 0;
+}
+.contentsBox {
+  padding: 50px 0;
+}
+.titleBox {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: $small-size;
+  h2 {
+    font-size: $medium-size;
+    margin-bottom: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+}
+#main {
+  #mainVisual {
+    overflow: hidden;
+    position: relative;
+    ul {
+      li {
+        height: 60vh;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 50%;
+        &.visual01 {
+          background-image: url("../images/main/mainVisual01.jpg");
+        }
+        &.visual02 {
+          background-image: url("../images/main/mainVisual02.jpg");
+        }
+        &.visual03 {
+          background-image: url("../images/main/mainVisual03.jpg");
+        }
+      }
+    }
+    .slogan {
+      pointer-events: none;
+      position: absolute;
+      z-index: 3;
+      width: 80%;
+      top: 50%;
+      left: 50%;
+      text-align: center;
+      transform: translate(-50%, -50%);
+      color: $white-color;
+      word-break: keep-all; // 단어별로 줄바꿈을 하겠다....
+
+      .main {
+        font-size: 2.4rem;
+        font-weight: 600;
+        margin-bottom: 50px;
+        text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+      }
+      .sub {
+        font-size: $normal-size;
+        line-height: 1.5;
+      }
+    }
+    button {
+      position: absolute;
+      top: 50%;
+      width: 50px;
+      height: 50px;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 4;
+      color: $white-color;
+      cursor: pointer;
+      &.prev {
+        left: 0;
+      }
+      &.next {
+        right: 0;
+      }
+    }
+    .iconScroll {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: absolute;
+      width: 100%;
+      bottom: 20px;
+      z-index: 2;
+      .icon {
+        display: flex;
+        width: 15px;
+        height: 30px;
+        border: 2px solid $white-color;
+        border-radius: 100px;
+        margin-bottom: 10px;
+        justify-content: center;
+        &:before {
+          @include pseudo(block, relative);
+          width: 2px;
+          height: 5px;
+          background-color: $white-color;
+          border-radius: 100px;
+          margin-top: 10px;
+          animation: iconAni 0.5s ease infinite alternate;
+          //animation: name duration timing-function delay iteration-count direction fill-mode;
+        }
+      }
+      .txt {
+        color: $white-color;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 1.2rem;
+      }
+    }
+  }
+  // mainVisual end
+  #quickMenu {
+    padding: 0;
+    .list {
+      display: flex;
+      justify-content: center;
+      padding: 5px;
+      li {
+        position: relative;
+        overflow: hidden;
+        width: 33.33%;
+        margin: 5px;
+        &:before {
+          @include pseudo();
+          border: 1px solid $white-color;
+          left: 20px;
+          right: 20px;
+          top: 20px;
+          bottom: 20px;
+          opacity: 0;
+          z-index: 2;
+          transition: all 0.25s ease;
+        }
+        img {
+          width: 100%;
+          transition: all 0.25s ease;
+        }
+        .txtBox {
+          position: absolute;
+          bottom: 10px;
+          left: 10px;
+          color: $white-color;
+          font-size: $small-size;
+          word-break: keep-all;
+          h3 {
+            font-size: $normal-size;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-top: 10px;
+          }
+        }
+      }
+    }
+  }
+  // quickMenu end
+  #business {
+    background: url("../images/main/bgBusiness.jpg") no-repeat 50%;
+    background-size: cover;
+    padding-bottom: 0px;
+    .listBox {
+      .list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 5px;
+        li {
+          width: calc(50% - 10px);
+          position: relative;
+          overflow: hidden;
+          margin: 5px;
+          &:hover img {
+            // transform: scale(1.2);
+            // filter: grayscale(0);
+          }
+          img {
+            width: 100%;
+            //filter: grayscale(100%);
+            transition: all 0.25s ease;
+          }
+          .txtBox {
+            position: absolute;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            color: $white-color;
+            font-size: $small-size;
+            h3 {
+              font-size: $normal-size;
+              margin-bottom: 10px;
+              font-weight: 500;
+            }
+            p {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+  // business end
+  #news {
+    padding-bottom: 20px;
+    overflow: hidden;
+    .listBox {
+      .list {
+        display: flex;
+        justify-content: space-between;
+        li {
+          border: 1px solid $border-color;
+          img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+          }
+          .txtBox {
+            padding: 10px;
+            h3 {
+              font-size: $medium-size;
+              margin-bottom: 20px;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+            .txt {
+              font-size: $small-size;
+              margin-bottom: 20px;
+              @include multiEllipsis(1.5, 2);
+            }
+            .date {
+              font-size: $small-size;
+            }
+          }
+        }
+      }
+    }
+  }
+  //news end
+  #customer {
+    background: url("../images/main/bgCustomer.jpg") no-repeat 50%;
+    background-size: cover;
+    color: $white-color;
+    .titleBox {
+      h2 {
+        &:after {
+          @include pseudo(block, relative);
+          @include box(30px, 2px);
+          background-color: $white-color;
+          margin: 15px auto;
+        }
+      }
+      p {
+        line-height: 1.5;
+        word-break: keep-all;
+      }
+    }
+    .btns {
+      display: flex;
+      justify-content: center;
+      a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: $normal-size;
+        @include box(180px, 50px);
+        color: $white-color;
+        background-color: $main-color;
+        border-radius: 100px;
+        overflow: hidden;
+        @include longShadow(darken($main-color, 10), left, 50);
+      }
+    }
+  }
+}
+
+@keyframes iconAni {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(10px);
+  }
+}

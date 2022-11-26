@@ -1,0 +1,79 @@
+@import "vars";
+@import "mixins";
+* {
+  box-sizing: border-box;
+}
+.biman {
+  width: 640px;
+  margin: 100px auto;
+  border: 1px solid $border-color;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 50px;
+  font-family: "Poppins", "Noto Sans KR", sans-serif;
+
+  h1 {
+    text-align: center;
+    font-size: $large-size * 1.5;
+    padding-bottom: 30px;
+    font-weight: 700;
+    overflow: hidden;
+  }
+  .inputBox {
+    margin-bottom: 20px;
+    label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    span {
+      width: 50px;
+    }
+    input {
+      width: calc(100% - 50px - 20px);
+    }
+  }
+  input {
+    height: 60px;
+    border: 1px solid $border-color;
+    padding: 0 15px;
+  }
+  button {
+    height: 60px;
+    margin-top: 50px;
+    background-color: $main-color;
+    color: $white-color;
+    border-radius: 100px;
+    @include longShadow(darken($main-color, 10), right, 50);
+    overflow: hidden;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    font-weight: 500;
+    &#btnReset {
+      margin-top: 20px;
+      background-color: #222;
+      @include longShadow(darken(#222, 10), right, 50);
+    }
+  }
+}
+#result {
+  margin-top: 50px;
+  font-size: 1.8rem;
+  text-align: center;
+  strong {
+    font-weight: 700;
+  }
+}
+
+@media all and (max-width: 640px) {
+  .biman {
+    width: 100%;
+    padding: 50px 20px;
+    margin: 0;
+    border: none;
+    padding: 50px 20px;
+  }
+}
